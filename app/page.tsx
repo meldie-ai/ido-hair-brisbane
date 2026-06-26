@@ -258,7 +258,7 @@ export default function Home() {
               </tbody>
             </table>
             <div className="info-pills" style={{ marginTop: 28 }}>
-              {["♿ Wheelchair accessible", "👶 Good for kids", "☕ Beverages provided", "💳 Cards & NFC pay", "🚶 Walk-ins welcome", "🅿️ Paid street parking", "🚽 Toilet on-site"].map((pill) => (
+              {["👶 Good for kids", "☕ Beverages provided", "💳 Cards & NFC pay", "🚶 Walk-ins welcome", "🅿️ Paid street parking", "🚽 Toilet on-site"].map((pill) => (
                 <span className="pill" key={pill}>{pill}</span>
               ))}
             </div>
