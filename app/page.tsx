@@ -1,4 +1,5 @@
 import BookingForm from "@/components/BookingForm";
+import Nav from "@/components/Nav";
 
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const todayIndex = new Date().getDay();
@@ -7,18 +8,7 @@ export default function Home() {
   return (
     <>
       {/* NAV */}
-      <nav>
-        <a className="nav-logo" href="#">Ido<span>·</span>Hair</a>
-        <ul className="nav-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#promotions">Offers</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#visit">Visit</a></li>
-          <li><a href="#booking" className="nav-book">Book Now</a></li>
-        </ul>
-      </nav>
+      <Nav />
 
       {/* EVENT STRIP */}
       <div className="event-strip">
