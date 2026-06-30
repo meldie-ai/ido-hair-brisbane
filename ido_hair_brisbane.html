@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ido Hair Brisbane</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+KR:wght@300;400&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream:   #F8F5F0;
+    --charcoal:#1A1A18;
+    --blush:   #C8A99A;
+    --mist:    #E8E2DA;
+    --soft:    #6B6560;
+    --accent:  #8B6F5E;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); font-size: 16px; line-height: 1.6; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 72px; background: rgba(248,245,240,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--mist); }
+  .nav-logo { font-family: 'Noto Serif KR', serif; font-size: 1.3rem; font-weight: 300; letter-spacing: 0.12em; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--blush); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--charcoal); }
+  .nav-book { background: var(--charcoal) !important; color: var(--cream) !important; padding: 10px 22px !important; border-radius: 2px; }
+  .nav-book:hover { background: var(--accent) !important; }
+
+  /* EVENT STRIP */
+  .event-strip { background: var(--charcoal); color: var(--cream); text-align: center; padding: 14px 20px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 72px; }
+  .event-strip span { color: var(--blush); margin: 0 8px; }
+
+  /* HERO */
+  .hero { min-height: calc(100vh - 72px - 48px); display: grid; grid-template-columns: 1fr 1fr; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 80px; }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 28px; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 400; line-height: 1.08; color: var(--charcoal); margin-bottom: 12px; }
+  .hero-title em { font-style: italic; color: var(--blush); }
+  .hero-subtitle { font-family: 'Noto Serif KR', serif; font-size: 1rem; color: var(--soft); font-weight: 300; margin-bottom: 32px; letter-spacing: 0.05em; }
+  .hero-desc { font-size: 1rem; color: var(--soft); max-width: 400px; margin-bottom: 44px; line-height: 1.75; }
+  .hero-ctas { display: flex; gap: 16px; align-items: center; }
+  .btn-primary { background: var(--charcoal); color: var(--cream); padding: 16px 36px; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 2px; transition: background 0.25s; }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost { color: var(--charcoal); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1.5px solid var(--blush); padding-bottom: 2px; }
+  .hero-stats { display: flex; gap: 40px; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--mist); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-top: 2px; }
+  .hero-right { background: linear-gradient(160deg, #E8E2DA 0%, #D4C9BE 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 500px; }
+  .hero-badge { position: absolute; bottom: 48px; left: -24px; background: var(--cream); border: 1px solid var(--mist); padding: 20px 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border-radius: 4px; min-width: 200px; }
+  .badge-stars { color: var(--blush); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 4px; }
+  .badge-score { font-family: 'Playfair Display', serif; font-size: 1.8rem; }
+  .badge-count { font-size: 0.72rem; color: var(--soft); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* SECTIONS */
+  section { padding: 100px 80px; }
+  .section-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 16px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.15; color: var(--charcoal); margin-bottom: 20px; }
+  .section-body { font-size: 1rem; color: var(--soft); line-height: 1.8; max-width: 560px; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; background: var(--mist); }
+  .service-card { background: var(--cream); padding: 48px 40px; transition: background 0.25s; cursor: pointer; position: relative; overflow: hidden; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; height: 2px; width: 0; background: var(--blush); transition: width 0.35s; }
+  .service-card:hover { background: #FAF7F4; }
+  .service-card:hover::after { width: 100%; }
+  .service-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+  .service-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 10px; }
+  .service-desc { font-size: 0.88rem; color: var(--soft); line-height: 1.7; margin-bottom: 20px; }
+  .service-price { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blush); font-weight: 500; }
+
+  /* ABOUT */
+  #about { background: var(--charcoal); color: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  #about .section-eyebrow { color: var(--blush); }
+  #about .section-title { color: var(--cream); }
+  #about .section-body { color: rgba(248,245,240,0.65); max-width: 100%; }
+  .credentials-list { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+  .cred-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cred-flag { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .cred-text { font-size: 0.88rem; color: rgba(248,245,240,0.65); line-height: 1.5; }
+  .cred-text strong { color: var(--cream); font-weight: 500; display: block; margin-bottom: 2px; }
+  .about-visual { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; height: 440px; display: flex; align-items: center; justify-content: center; }
+  .about-visual-inner { text-align: center; color: rgba(255,255,255,0.28); font-family: 'Playfair Display', serif; }
+
+  /* TEAM */
+  #team { background: var(--cream); }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+  .team-card { text-align: center; }
+  .team-avatar { width: 100%; aspect-ratio: 1; background: var(--mist); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; margin-bottom: 20px; }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 6px; }
+  .team-role { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blush); }
+
+  /* PROMOTIONS */
+  #promotions { background: var(--mist); }
+  .promo-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-top: 60px; }
+  .promo-card { background: var(--cream); padding: 40px; border-radius: 4px; }
+  .promo-card.featured { background: var(--charcoal); color: var(--cream); }
+  .promo-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 20px; }
+  .promo-pct { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; line-height: 1; color: var(--blush); margin-bottom: 8px; }
+  .promo-day { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 12px; }
+  .promo-detail { font-size: 0.85rem; color: var(--soft); line-height: 1.7; }
+  .promo-card.featured .promo-detail { color: rgba(248,245,240,0.6); }
+  .promo-time { margin-top: 20px; padding: 12px 16px; background: rgba(200,169,154,0.12); border-radius: 2px; font-size: 0.8rem; color: rgba(248,245,240,0.55); line-height: 1.6; }
+
+  /* PRODUCTS */
+  .products-intro { display: flex; justify-content: space-between; align-items: flex-end; }
+  .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+  .product-card { cursor: pointer; }
+  .product-img { aspect-ratio: 3/4; background: var(--mist); border-radius: 2px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; transition: transform 0.3s; }
+  .product-card:hover .product-img { transform: scale(1.02); }
+  .product-brand { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush); margin-bottom: 4px; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--charcoal); margin-bottom: 6px; }
+  .product-price { font-size: 0.88rem; color: var(--soft); }
+
+  /* REVIEWS */
+  #reviews { background: var(--mist); }
+  .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+  .score-big { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 400; line-height: 1; }
+  .score-stars { color: var(--blush); font-size: 1.1rem; letter-spacing: 4px; margin-bottom: 4px; }
+  .reviews-score { display: flex; align-items: baseline; gap: 16px; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .review-card { background: var(--cream); padding: 36px; border-radius: 4px; }
+  .review-stars { color: var(--blush); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 16px; }
+  .review-text { font-size: 0.9rem; color: var(--soft); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+  .review-author { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; }
+
+  /* VISIT INFO */
+  #visit { background: var(--cream); }
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 56px; }
+  .hours-table { width: 100%; border-collapse: collapse; }
+  .hours-table tr { border-bottom: 1px solid var(--mist); }
+  .hours-table td { padding: 12px 0; font-size: 0.9rem; color: var(--soft); }
+  .hours-table td:first-child { font-weight: 500; color: var(--charcoal); width: 120px; }
+  .hours-table tr.today td { color: var(--blush); font-weight: 500; }
+  .info-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .pill { background: var(--mist); border-radius: 100px; padding: 8px 18px; font-size: 0.78rem; letter-spacing: 0.08em; color: var(--soft); display: flex; align-items: center; gap: 8px; }
+  .visit-map-placeholder { background: var(--mist); border-radius: 4px; height: 100%; min-height: 340px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: var(--soft); font-size: 0.88rem; }
+  .visit-map-placeholder a { color: var(--blush); text-decoration: none; font-weight: 500; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--blush); padding-bottom: 2px; }
+
+  /* BOOKING */
+  #booking { background: var(--charcoal); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  #booking .section-title { color: var(--cream); }
+  #booking .section-eyebrow { color: var(--blush); }
+  #booking .section-body { color: rgba(248,245,240,0.6); }
+  .booking-details { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+  .detail-item { display: flex; align-items: flex-start; gap: 20px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .detail-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+  .detail-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush); margin-bottom: 4px; }
+  .detail-val { font-size: 0.92rem; color: var(--cream); line-height: 1.55; }
+  .detail-val a { color: var(--blush); text-decoration: none; }
+  .booking-form-area { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 48px; }
+  .form-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--cream); margin-bottom: 28px; }
+  .form-group { margin-bottom: 20px; }
+  .form-label { display: block; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(248,245,240,0.5); margin-bottom: 8px; }
+  .form-input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; padding: 14px 16px; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+  .form-input:focus { border-color: var(--blush); }
+  .form-input option { background: #1A1A18; }
+  .form-submit { width: 100%; background: var(--blush); color: var(--cream); border: none; padding: 18px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; cursor: pointer; border-radius: 2px; margin-top: 8px; transition: background 0.25s; }
+  .form-submit:hover { background: var(--accent); }
+  .form-note { font-size: 0.75rem; color: rgba(248,245,240,0.35); margin-top: 16px; text-align: center; }
+
+  /* FOOTER */
+  footer { background: #111110; padding: 60px 80px 40px; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 32px; }
+  .footer-logo { font-family: 'Noto Serif KR', serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 0.12em; color: var(--cream); }
+  .footer-logo span { color: var(--blush); }
+  .footer-tagline { font-size: 0.82rem; color: rgba(248,245,240,0.35); margin-top: 8px; }
+  .footer-links { display: flex; gap: 64px; }
+  .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); margin-bottom: 16px; font-weight: 500; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { color: rgba(248,245,240,0.45); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--cream); }
+  .footer-bottom { display: flex; justify-content: space-between; font-size: 0.78rem; color: rgba(248,245,240,0.3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Ido<span>·</span>Hair</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#promotions">Offers</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#booking" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<div class="event-strip">
+  Morning Special 9:45–11:00 am<span>·</span>Tue–Fri 20% off &nbsp;·&nbsp; Sat–Mon 15% off<span>·</span>Pre-book 1 day ahead to apply
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Korean · Japanese · Brisbane CBD</p>
+    <h1 class="hero-title">
+      Hair done<br><em>right</em>,<br>from Seoul<br>to George St.
+    </h1>
+    <p class="hero-subtitle">아이두 헤어 브리즈번</p>
+    <p class="hero-desc">
+      Government-certified hairdressers and educators — qualified across Australia, Korea, Japan, and the UK — bringing precision technique to Level 2, 187 George Street.
+    </p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">Book a Visit</a>
+      <a href="#services" class="btn-ghost">See Services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4.7★</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div>
+        <div class="stat-num">2,033</div>
+        <div class="stat-label">Reviews</div>
+      </div>
+      <div>
+        <div class="stat-num">28K</div>
+        <div class="stat-label">Instagram</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <svg width="500" height="500" viewBox="0 0 500 500" style="opacity:0.22; position:absolute;">
+      <path d="M80 300 Q160 80 260 260 Q360 440 440 220" stroke="#8B6F5E" stroke-width="2.5" fill="none"/>
+      <path d="M60 340 Q140 100 250 300 Q360 480 460 240" stroke="#C8A99A" stroke-width="2" fill="none"/>
+      <path d="M100 280 Q200 60 280 240 Q360 420 450 200" stroke="#8B6F5E" stroke-width="1.5" fill="none"/>
+      <path d="M120 320 Q190 140 270 280 Q350 420 430 260" stroke="#C8A99A" stroke-width="2.5" fill="none"/>
+      <path d="M40 260 Q180 20 300 240 Q400 440 500 200" stroke="#8B6F5E" stroke-width="1" fill="none"/>
+      <path d="M200 100 Q240 200 200 320 Q180 400 210 460" stroke="#C8A99A" stroke-width="1.5" fill="none"/>
+      <path d="M300 80 Q280 200 310 340 Q320 400 300 460" stroke="#8B6F5E" stroke-width="2" fill="none"/>
+      <circle cx="250" cy="250" r="160" stroke="#C8A99A" stroke-width="0.5" fill="none"/>
+      <circle cx="250" cy="250" r="90" stroke="#8B6F5E" stroke-width="0.4" fill="none"/>
+    </svg>
+    <svg width="240" height="240" viewBox="0 0 240 240" style="z-index:1; position:relative;">
+      <text x="120" y="105" text-anchor="middle" font-family="Noto Serif KR, serif" font-size="18" fill="#8B6F5E" opacity="0.7">아이두 헤어</text>
+      <text x="120" y="135" text-anchor="middle" font-family="Noto Serif KR, serif" font-size="12" fill="#8B6F5E" opacity="0.5">브리즈번</text>
+      <circle cx="120" cy="120" r="100" stroke="#C8A99A" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <circle cx="120" cy="120" r="80" stroke="#8B6F5E" stroke-width="0.5" fill="none" opacity="0.3"/>
+    </svg>
+    <div class="hero-badge">
+      <div class="badge-stars">★★★★★</div>
+      <div class="badge-score">4.7</div>
+      <div class="badge-count">2,033 Google Reviews</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-eyebrow">What We Do</p>
+  <h2 class="section-title">Crafted for every hair story</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🌊</span>
+      <div class="service-name">Digital Perm</div>
+      <div class="service-desc">Korean-machine digital waves with lasting curl definition — from loose beach waves to defined spirals.</div>
+      <div class="service-price">From $200 · Main chemical work</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌸</span>
+      <div class="service-name">Colour &amp; Tint</div>
+      <div class="service-desc">Full tint, ombré, balayage, foils, and bleach using premium Italian non-ammonia products.</div>
+      <div class="service-price">From $200 · Consultation required</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">✨</span>
+      <div class="service-name">Nanoplasty Straightening</div>
+      <div class="service-desc">Authentic Nanoplasty technology — ultra-smooth, frizz-free results with genuine premium products.</div>
+      <div class="service-price">From $200 · Premium product</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🪄</span>
+      <div class="service-name">Keratin Smoothing</div>
+      <div class="service-desc">Japanese Shiseido and Korean-technique keratin for silky, manageable hair.</div>
+      <div class="service-price">From $200 · Consultation included</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💫</span>
+      <div class="service-name">Cold Perm / C-Curl</div>
+      <div class="service-desc">Korean Create ATS premium wave solution for natural, bouncy curls with lasting hold.</div>
+      <div class="service-price">From $200 · Made in Korea</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">✂️</span>
+      <div class="service-name">Cut &amp; Styling</div>
+      <div class="service-desc">Precision cuts from hairdressers certified across Australia, UK, Korea, and Japan.</div>
+      <div class="service-price">Consultation pricing</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <p class="section-eyebrow">Our Story</p>
+    <h2 class="section-title">Qualified across<br>four countries</h2>
+    <p class="section-body">Ido Hair is owner-operated by an Australian government-certified hair professional and educator — with qualifications spanning Australia, the UK, Korea, and Japan. We've published a hairdressing book, <em>The Basic of Scissors</em>, in Korea, and even designed our own professional scissors.</p>
+    <div class="credentials-list">
+      <div class="cred-item">
+        <div class="cred-flag">🇦🇺</div>
+        <div class="cred-text"><strong>Australia — Government-Certified Professional &amp; Educator</strong>Registered hairdresser and certified hairdressing instructor</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-flag">🇰🇷</div>
+        <div class="cred-text"><strong>Korea — Qualified Hairdresser</strong>Published authors of <em>The Basic of Scissors</em> · Designed professional scissors used in-salon</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-flag">🇯🇵</div>
+        <div class="cred-text"><strong>Japan — Qualified Hairdresser</strong>Japanese Shiseido straightening specialists</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-flag">🇬🇧</div>
+        <div class="cred-text"><strong>United Kingdom — Qualified Hairdresser</strong>European colour and technique foundation</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-visual">
+    <div class="about-visual-inner">
+      <div style="font-size:3.5rem; opacity:0.35; margin-bottom:16px;">📖</div>
+      <div style="font-style:italic; font-size:1rem; opacity:0.5; margin-bottom:8px;">The Basic of Scissors</div>
+      <div style="font-size:0.78rem; opacity:0.3; line-height:1.9; margin-top:32px;">아이두 헤어<br>브리즈번 CBD<br>George St Level 2</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <p class="section-eyebrow">Our Stylists</p>
+  <h2 class="section-title">The team behind<br>every great result</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">✂️</div>
+      <div class="team-name">Andy</div>
+      <div class="team-role">Nanoplasty Specialist</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">🌸</div>
+      <div class="team-name">Yein</div>
+      <div class="team-role">Colour &amp; Styling</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">🌊</div>
+      <div class="team-name">Ara</div>
+      <div class="team-role">Perm Specialist</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">💫</div>
+      <div class="team-name">Nova &amp; Rose</div>
+      <div class="team-role">Cut &amp; Colour</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMOTIONS -->
+<section id="promotions">
+  <p class="section-eyebrow">Current Offers</p>
+  <h2 class="section-title">Morning &amp; weekday discounts</h2>
+  <div class="promo-grid">
+    <div class="promo-card featured">
+      <div class="promo-label">Morning Event — Every Day</div>
+      <div style="font-size:0.9rem; color:rgba(248,245,240,0.6); line-height:1.8; margin-bottom:24px;">Book at least one day in advance and arrive between 9:45–11:00 am to access the current discount. Applies to all main chemical work only. Prices subject to change upon consultation.</div>
+      <div class="promo-time">⏰ Window: 9:45 am – 11:00 am &nbsp;·&nbsp; Pre-booking required (1 day prior)</div>
+    </div>
+    <div class="promo-card">
+      <div class="promo-label">Tue – Fri</div>
+      <div class="promo-pct">20%</div>
+      <div class="promo-day">Off</div>
+      <div class="promo-detail">All main chemical services during the morning event window, Tuesday through Friday.</div>
+    </div>
+    <div class="promo-card">
+      <div class="promo-label">Sat – Mon</div>
+      <div class="promo-pct">15%</div>
+      <div class="promo-day">Off</div>
+      <div class="promo-detail">All main chemical services during the morning event window, Saturday through Monday.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-intro">
+    <div>
+      <p class="section-eyebrow">Products We Use</p>
+      <h2 class="section-title">Only the best,<br>authentic products</h2>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img">🇮🇹</div>
+      <div class="product-brand">Italy / Australia</div>
+      <div class="product-name">Premium Italian Tint Colour</div>
+      <div class="product-price">Non-ammonia · Australian owned</div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🇯🇵</div>
+      <div class="product-brand">Japan</div>
+      <div class="product-name">Shiseido Straightening</div>
+      <div class="product-price">Made in Japan · Chemical straightening</div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🇰🇷</div>
+      <div class="product-brand">Korea</div>
+      <div class="product-name">Create ATS Perm Solution</div>
+      <div class="product-price">Made in Korea · Professional wave</div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">✨</div>
+      <div class="product-brand">Authentic</div>
+      <div class="product-name">Nanoplasty Treatment</div>
+      <div class="product-price">Premium genuine technology</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header">
+    <div>
+      <p class="section-eyebrow">What Clients Say</p>
+      <h2 class="section-title">2,033 reasons to visit</h2>
+    </div>
+    <div class="reviews-score">
+      <div class="score-big">4.7</div>
+      <div>
+        <div class="score-stars">★★★★★</div>
+        <div style="font-size:0.82rem; color:var(--soft);">Google Reviews · Brisbane CBD</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"I am so impressed with how it turned out! My hairdresser Yein was very welcoming and friendly — she listened well to what I wanted to achieve."</div>
+      <div class="review-author">Rina · 3 weeks ago</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"I had a digital perm done and couldn't be happier. The team was professional, attentive, and really took time to understand the look I wanted."</div>
+      <div class="review-author">Yana S. · 2 months ago</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Easy to find, convenient location. I booked the day before and they were incredibly accommodating in fitting me in last minute."</div>
+      <div class="review-author">Manna L. · 1 month ago</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT INFO -->
+<section id="visit">
+  <p class="section-eyebrow">Plan Your Visit</p>
+  <h2 class="section-title">Find us in<br>Brisbane CBD</h2>
+  <div class="visit-grid">
+    <div>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>9:30 am – 6:30 pm</td></tr>
+        <tr><td>Tuesday</td><td>9:30 am – 6:30 pm</td></tr>
+        <tr><td>Wednesday</td><td>9:30 am – 6:30 pm</td></tr>
+        <tr><td>Thursday</td><td>9:30 am – 6:30 pm</td></tr>
+        <tr class="today"><td>Friday</td><td>9:30 am – 6:30 pm</td></tr>
+        <tr><td>Saturday</td><td>9:30 am – 5:00 pm</td></tr>
+        <tr><td>Sunday</td><td>9:30 am – 5:00 pm</td></tr>
+      </table>
+      <div class="info-pills" style="margin-top:28px;">
+        <span class="pill">♿ Wheelchair accessible</span>
+        <span class="pill">👶 Good for kids</span>
+        <span class="pill">☕ Beverages provided</span>
+        <span class="pill">💳 Cards &amp; NFC pay</span>
+        <span class="pill">🚶 Walk-ins welcome</span>
+        <span class="pill">🅿️ Paid street parking</span>
+        <span class="pill">🚽 Toilet on-site</span>
+      </div>
+    </div>
+    <div class="visit-map-placeholder">
+      <div style="font-size:2.5rem; opacity:0.4;">📍</div>
+      <div style="font-weight:500; color:var(--charcoal);">Level 2 / 187 George St</div>
+      <div style="font-size:0.85rem;">Brisbane City QLD 4000</div>
+      <div style="margin-top:16px;">
+        <a href="https://maps.google.com/?q=Ido+Hair+Brisbane" target="_blank">Open in Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div>
+    <p class="section-eyebrow">Reservations</p>
+    <h2 class="section-title">Ready to book<br>your visit?</h2>
+    <p class="section-body">Call us or fill in the form — we'll confirm your appointment by phone or message. Walk-ins welcome based on availability.</p>
+    <div class="booking-details">
+      <div class="detail-item">
+        <div class="detail-icon">📍</div>
+        <div>
+          <div class="detail-label">Location</div>
+          <div class="detail-val">Level 2 / 187 George St, Brisbane City QLD 4000</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">📞</div>
+        <div>
+          <div class="detail-label">Phone</div>
+          <div class="detail-val">0451 212 233 · 0451 212 266 · 0451 212 255</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">🕐</div>
+        <div>
+          <div class="detail-label">Hours</div>
+          <div class="detail-val">Mon–Fri 9:30 am–6:30 pm &nbsp;·&nbsp; Sat–Sun 9:30 am–5:00 pm<br><span style="font-size:0.82rem; color:rgba(248,245,240,0.4);">Morning event: 9:45–11:00 am daily (pre-book 1 day prior)</span></div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">📱</div>
+        <div>
+          <div class="detail-label">Social &amp; Pricing</div>
+          <div class="detail-val">
+            <a href="https://www.instagram.com/idohair_brisbane_official/" target="_blank">@idohair_brisbane_official</a> &nbsp;·&nbsp;
+            <a href="https://www.facebook.com/idohairbrisbane/" target="_blank">Facebook</a><br>
+            <span style="font-size:0.82rem; color:rgba(248,245,240,0.4);">Current pricing on Instagram stories &amp; Facebook service categories</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="booking-form-area">
+    <div class="form-title">Request an appointment</div>
+    <div class="form-group">
+      <label class="form-label">Your name</label>
+      <input class="form-input" type="text" placeholder="Full name" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Phone or email</label>
+      <input class="form-input" type="text" placeholder="Contact details" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Service</label>
+      <select class="form-input">
+        <option value="">Select a service…</option>
+        <option>Digital Perm</option>
+        <option>Cold Perm / C-Curl</option>
+        <option>Colour / Tint / Balayage</option>
+        <option>Bleach / Ombré</option>
+        <option>Nanoplasty Straightening</option>
+        <option>Keratin Smoothing</option>
+        <option>Chemical Straightening (Shiseido)</option>
+        <option>Cut &amp; Styling</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Preferred date &amp; time</label>
+      <input class="form-input" type="text" placeholder="e.g. Friday 10 am" />
+    </div>
+    <button class="form-submit">Send Enquiry →</button>
+    <p class="form-note">We'll confirm via phone or message within a few hours.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Ido<span>·</span>Hair</div>
+      <div class="footer-tagline">Korean &amp; Japanese Hair Salon · Brisbane CBD</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Digital Perm</a></li>
+          <li><a href="#services">Colour &amp; Tint</a></li>
+          <li><a href="#services">Nanoplasty</a></li>
+          <li><a href="#services">Keratin</a></li>
+          <li><a href="#services">Cuts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#promotions">Offers</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#visit">Hours &amp; Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="tel:0451212233">0451 212 233</a></li>
+          <li><a href="https://www.facebook.com/idohairbrisbane/" target="_blank">Facebook</a></li>
+          <li><a href="https://www.instagram.com/idohair_brisbane_official/" target="_blank">Instagram</a></li>
+          <li><a href="https://maps.google.com/?q=Ido+Hair+Brisbane" target="_blank">Google Maps</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Ido Hair Brisbane. All rights reserved.</span>
+    <span>Level 2 / 187 George St, Brisbane QLD 4000</span>
+  </div>
+</footer>
+
+</body>
+</html>

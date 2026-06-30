@@ -1,22 +1,94 @@
 import BookingForm from "@/components/BookingForm";
 import Nav from "@/components/Nav";
+import { isSupabaseConfigured, getSupabase } from "@/lib/supabase";
+import type { StaffMember, Promotion, BusinessHour, Announcement } from "@/lib/types";
 
-const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const todayIndex = new Date().getDay();
+export const revalidate = 30;
 
-export default function Home() {
+// ── Fallback data (used when Supabase isn't configured yet) ──────────────────
+
+const FALLBACK_STAFF: StaffMember[] = [
+  { id: "1", name: "Andy",       role: "Nanoplasty Specialist", photo_url: null, display_order: 1 },
+  { id: "2", name: "Yein",       role: "Colour & Styling",      photo_url: null, display_order: 2 },
+  { id: "3", name: "Ara",        role: "Perm Specialist",        photo_url: null, display_order: 3 },
+  { id: "4", name: "Nova & Rose",role: "Cut & Colour",           photo_url: null, display_order: 4 },
+];
+
+const FALLBACK_PROMOTIONS: Promotion[] = [
+  { id: "1", label: "Tue – Fri", discount_percent: 20, description: "All main chemical services during the morning event window, Tuesday through Friday.",  time_window_start: "09:45", time_window_end: "11:00", is_active: true },
+  { id: "2", label: "Sat – Mon", discount_percent: 15, description: "All main chemical services during the morning event window, Saturday through Monday.", time_window_start: "09:45", time_window_end: "11:00", is_active: true },
+];
+
+const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const FALLBACK_HOURS: BusinessHour[] = DAY_NAMES.map((_, i) => ({
+  id: String(i), day_of_week: i,
+  open_time: "09:30",
+  close_time: i === 0 || i === 6 ? "17:00" : "18:30",
+  is_closed: false,
+}));
+
+const FALLBACK_ANNOUNCEMENT: Announcement = {
+  id: "1",
+  message_text: "Morning Special 9:45–11:00 am · Tue–Fri 20% off · Sat–Mon 15% off · Pre-book 1 day ahead to apply",
+  is_active: true,
+};
+
+// ── Data fetching ────────────────────────────────────────────────────────────
+
+async function fetchSiteData() {
+  if (!isSupabaseConfigured()) {
+    return {
+      staff: FALLBACK_STAFF,
+      promotions: FALLBACK_PROMOTIONS,
+      hours: FALLBACK_HOURS,
+      announcement: FALLBACK_ANNOUNCEMENT,
+    };
+  }
+  const db = getSupabase();
+  const [staffRes, promoRes, hoursRes, announcementRes] = await Promise.all([
+    db.from("staff").select("*").order("display_order"),
+    db.from("promotions").select("*").eq("is_active", true).order("created_at"),
+    db.from("business_hours").select("*").order("day_of_week"),
+    db.from("announcement").select("*").eq("is_active", true).limit(1).single(),
+  ]);
+  return {
+    staff:        (staffRes.data        ?? FALLBACK_STAFF)       as StaffMember[],
+    promotions:   (promoRes.data        ?? FALLBACK_PROMOTIONS)  as Promotion[],
+    hours:        (hoursRes.data        ?? FALLBACK_HOURS)        as BusinessHour[],
+    announcement: (announcementRes.data ?? null)                  as Announcement | null,
+  };
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function fmtTime(t: string | null): string {
+  if (!t) return "";
+  const [h, m] = t.split(":").map(Number);
+  const period = h >= 12 ? "pm" : "am";
+  return `${h % 12 || 12}:${String(m).padStart(2, "0")} ${period}`;
+}
+
+// ── Page ─────────────────────────────────────────────────────────────────────
+
+export default async function Home() {
+  const { staff, promotions, hours, announcement } = await fetchSiteData();
+  const today = new Date().toLocaleString("en-AU", { timeZone: "Australia/Brisbane", weekday: "long" });
+
   return (
     <>
       {/* NAV */}
       <Nav />
 
       {/* EVENT STRIP */}
-      <div className="event-strip">
-        Morning Special 9:45–11:00 am<span>·</span>Tue–Fri 20% off &nbsp;·&nbsp; Sat–Mon 15% off<span>·</span>Pre-book 1 day ahead to apply
-      </div>
+      {announcement && (
+        <div className="event-strip">
+          {announcement.message_text}
+        </div>
+      )}
 
       {/* HERO */}
-      <div className="hero">
+      <div className="hero" style={{ marginTop: announcement ? 0 : 72 }}>
         <div className="hero-left">
           <p className="hero-eyebrow">Korean · Japanese · Brisbane CBD</p>
           <h1 className="hero-title">
@@ -31,18 +103,9 @@ export default function Home() {
             <a href="#services" className="btn-ghost">See Services</a>
           </div>
           <div className="hero-stats">
-            <div>
-              <div className="stat-num">4.7★</div>
-              <div className="stat-label">Google Rating</div>
-            </div>
-            <div>
-              <div className="stat-num">2,033</div>
-              <div className="stat-label">Reviews</div>
-            </div>
-            <div>
-              <div className="stat-num">28K</div>
-              <div className="stat-label">Instagram</div>
-            </div>
+            <div><div className="stat-num">4.7★</div><div className="stat-label">Google Rating</div></div>
+            <div><div className="stat-num">2,033</div><div className="stat-label">Reviews</div></div>
+            <div><div className="stat-num">28K</div><div className="stat-label">Instagram</div></div>
           </div>
         </div>
         <div className="hero-right">
@@ -123,19 +186,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TEAM */}
+      {/* TEAM — live from Supabase */}
       <section id="team">
         <p className="section-eyebrow">Our Stylists</p>
         <h2 className="section-title">The team behind<br />every great result</h2>
         <div className="team-grid">
-          {[
-            { icon: "✂️", name: "Andy", role: "Nanoplasty Specialist" },
-            { icon: "🌸", name: "Yein", role: "Colour & Styling" },
-            { icon: "🌊", name: "Ara", role: "Perm Specialist" },
-            { icon: "💫", name: "Nova & Rose", role: "Cut & Colour" },
-          ].map((m) => (
-            <div className="team-card" key={m.name}>
-              <div className="team-avatar">{m.icon}</div>
+          {staff.map((m) => (
+            <div className="team-card" key={m.id}>
+              <div className="team-avatar">
+                {m.photo_url
+                  ? <img src={m.photo_url} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
+                  : "✂️"
+                }
+              </div>
               <div className="team-name">{m.name}</div>
               <div className="team-role">{m.role}</div>
             </div>
@@ -143,30 +206,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROMOTIONS */}
-      <section id="promotions">
-        <p className="section-eyebrow">Current Offers</p>
-        <h2 className="section-title">Morning &amp; weekday discounts</h2>
-        <div className="promo-grid">
-          <div className="promo-card featured">
-            <div className="promo-label">Morning Event — Every Day</div>
-            <div style={{ fontSize: "0.9rem", color: "rgba(248,245,240,0.6)", lineHeight: 1.8, marginBottom: 24 }}>Book at least one day in advance and arrive between 9:45–11:00 am to access the current discount. Applies to all main chemical work only. Prices subject to change upon consultation.</div>
-            <div className="promo-time">⏰ Window: 9:45 am – 11:00 am &nbsp;·&nbsp; Pre-booking required (1 day prior)</div>
+      {/* PROMOTIONS — live from Supabase */}
+      {promotions.length > 0 && (
+        <section id="promotions">
+          <p className="section-eyebrow">Current Offers</p>
+          <h2 className="section-title">Morning &amp; weekday discounts</h2>
+          <div className="promo-grid">
+            <div className="promo-card featured">
+              <div className="promo-label">Morning Event — Every Day</div>
+              <div style={{ fontSize: "0.9rem", color: "rgba(248,245,240,0.6)", lineHeight: 1.8, marginBottom: 24 }}>
+                Book at least one day in advance and arrive between 9:45–11:00 am to access the current discount. Applies to all main chemical work only. Prices subject to change upon consultation.
+              </div>
+              <div className="promo-time">
+                ⏰ Window: 9:45 am – 11:00 am &nbsp;·&nbsp; Pre-booking required (1 day prior)
+              </div>
+            </div>
+            {promotions.map((p) => (
+              <div className="promo-card" key={p.id}>
+                <div className="promo-label">{p.label}</div>
+                {p.discount_percent != null && (
+                  <>
+                    <div className="promo-pct">{p.discount_percent}%</div>
+                    <div className="promo-day">Off</div>
+                  </>
+                )}
+                {p.description && <div className="promo-detail">{p.description}</div>}
+              </div>
+            ))}
           </div>
-          <div className="promo-card">
-            <div className="promo-label">Tue – Fri</div>
-            <div className="promo-pct">20%</div>
-            <div className="promo-day">Off</div>
-            <div className="promo-detail">All main chemical services during the morning event window, Tuesday through Friday.</div>
-          </div>
-          <div className="promo-card">
-            <div className="promo-label">Sat – Mon</div>
-            <div className="promo-pct">15%</div>
-            <div className="promo-day">Off</div>
-            <div className="promo-detail">All main chemical services during the morning event window, Saturday through Monday.</div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* PRODUCTS */}
       <section id="products">
@@ -223,7 +292,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* VISIT INFO */}
+      {/* VISIT INFO — hours live from Supabase */}
       <section id="visit">
         <p className="section-eyebrow">Plan Your Visit</p>
         <h2 className="section-title">Find us in<br />Brisbane CBD</h2>
@@ -231,20 +300,20 @@ export default function Home() {
           <div>
             <table className="hours-table">
               <tbody>
-                {[
-                  { day: "Monday", hours: "9:30 am – 6:30 pm" },
-                  { day: "Tuesday", hours: "9:30 am – 6:30 pm" },
-                  { day: "Wednesday", hours: "9:30 am – 6:30 pm" },
-                  { day: "Thursday", hours: "9:30 am – 6:30 pm" },
-                  { day: "Friday", hours: "9:30 am – 6:30 pm" },
-                  { day: "Saturday", hours: "9:30 am – 5:00 pm" },
-                  { day: "Sunday", hours: "9:30 am – 5:00 pm" },
-                ].map((row) => (
-                  <tr key={row.day} className={DAYS[todayIndex] === row.day ? "today" : ""}>
-                    <td>{row.day}</td>
-                    <td>{row.hours}</td>
-                  </tr>
-                ))}
+                {hours.map((row) => {
+                  const dayName = DAY_NAMES[row.day_of_week];
+                  return (
+                    <tr key={row.day_of_week} className={dayName === today ? "today" : ""}>
+                      <td>{dayName}</td>
+                      <td>
+                        {row.is_closed
+                          ? "Closed"
+                          : `${fmtTime(row.open_time)} – ${fmtTime(row.close_time)}`
+                        }
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
             <div className="info-pills" style={{ marginTop: 28 }}>
