@@ -12,6 +12,11 @@ const ALLOWED_SERVICES = [
   "Cut & Styling",
 ];
 
+function isValidPhone(value: string): boolean {
+  const digits = value.replace(/[\s\-().+]/g, "")
+  return /^(0[2-9]\d{8}|61[2-9]\d{8})$/.test(digits)
+}
+
 // Simple in-memory rate limiter: max 5 requests per IP per 10 minutes
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 5;
@@ -60,6 +65,7 @@ export async function POST(req: NextRequest) {
 
   if (!name?.trim()) return fail("All fields are required.");
   if (!contact?.trim()) return fail("All fields are required.");
+  if (!isValidPhone(contact)) return fail("Please enter a valid Australian phone number.");
   if (!datetime?.trim()) return fail("All fields are required.");
   if (!service || !ALLOWED_SERVICES.includes(service)) return fail("Please select a valid service.");
 

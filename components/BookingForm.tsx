@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+function isValidPhone(value: string): boolean {
+  const digits = value.replace(/[\s\-().+]/g, "")
+  return /^(0[2-9]\d{8}|61[2-9]\d{8})$/.test(digits)
+}
+
 const SERVICES = [
   "Digital Perm",
   "Cold Perm / C-Curl",
@@ -21,9 +26,15 @@ export default function BookingForm() {
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setPhoneError("");
+    if (!isValidPhone(contact)) {
+      setPhoneError("Please enter a valid Australian phone number (e.g. 0451 212 233).");
+      return;
+    }
     setStatus("loading");
     setErrorMsg("");
 
@@ -99,14 +110,15 @@ export default function BookingForm() {
         <div className="form-group">
           <label className="form-label" htmlFor="field-contact">Phone number</label>
           <input
-            className="form-input"
+            className={`form-input${phoneError ? " form-input-error" : ""}`}
             id="field-contact"
             type="tel"
             placeholder="e.g. 0400 000 000"
             value={contact}
-            onChange={(e) => setContact(e.target.value)}
+            onChange={(e) => { setContact(e.target.value); setPhoneError(""); }}
             required
           />
+          {phoneError && <div style={{ fontSize: "0.78rem", color: "var(--blush)", marginTop: 6 }}>{phoneError}</div>}
         </div>
         <div className="form-group">
           <label className="form-label" htmlFor="field-service">Service</label>
