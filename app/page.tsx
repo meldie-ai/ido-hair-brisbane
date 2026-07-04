@@ -132,18 +132,17 @@ export default async function Home() {
         <h2 className="section-title">Crafted for every hair story</h2>
         <div className="services-grid">
           {[
-            { icon: "🌊", name: "Digital Perm", desc: "Korean-machine digital waves with lasting curl definition. Loose beach waves to defined spirals.", price: "From $200 · Main chemical work" },
-            { icon: "🌸", name: "Colour & Tint", desc: "Full tint, ombré, balayage, foils, and bleach using premium Italian non-ammonia products.", price: "From $200 · Consultation required" },
-            { icon: "✨", name: "Nanoplasty Straightening", desc: "Authentic Nanoplasty technology. Ultra-smooth, frizz-free results with genuine premium products.", price: "From $200 · Premium product" },
-            { icon: "🪄", name: "Keratin Smoothing", desc: "Japanese Shiseido and Korean-technique keratin for silky, manageable hair.", price: "From $200 · Consultation included" },
-            { icon: "💫", name: "Cold Perm / C-Curl", desc: "Korean Create ATS premium wave solution for natural, bouncy curls with lasting hold.", price: "From $200 · Made in Korea" },
-            { icon: "✂️", name: "Cut & Styling", desc: "Precision cuts from hairdressers certified across Australia, UK, Korea, and Japan.", price: "Consultation pricing" },
+            { icon: "🌊", name: "Digital Perm", desc: "Korean-machine digital waves with lasting curl definition. Loose beach waves to defined spirals." },
+            { icon: "🌸", name: "Colour & Tint", desc: "Full tint, ombré, balayage, foils, and bleach using premium Italian non-ammonia products." },
+            { icon: "✨", name: "Nanoplasty Straightening", desc: "Authentic Nanoplasty technology. Ultra-smooth, frizz-free results with genuine premium products." },
+            { icon: "🪄", name: "Keratin Smoothing", desc: "Japanese Shiseido and Korean-technique keratin for silky, manageable hair." },
+            { icon: "💫", name: "Cold Perm / C-Curl", desc: "Korean Create ATS premium wave solution for natural, bouncy curls with lasting hold." },
+            { icon: "✂️", name: "Cut & Styling", desc: "Precision cuts from hairdressers certified across Australia, UK, Korea, and Japan." },
           ].map((s) => (
             <div className="service-card" key={s.name}>
               <span className="service-icon">{s.icon}</span>
               <div className="service-name">{s.name}</div>
               <div className="service-desc">{s.desc}</div>
-              <div className="service-price">{s.price}</div>
             </div>
           ))}
         </div>
@@ -314,11 +313,18 @@ export default async function Home() {
               ))}
             </div>
           </div>
-          <div className="visit-map-placeholder">
-            <div style={{ fontSize: "2.5rem", opacity: 0.4 }}>📍</div>
-            <div style={{ fontWeight: 500, color: "var(--charcoal)" }}>Level 2 / 187 George St</div>
-            <div style={{ fontSize: "0.85rem" }}>Brisbane City QLD 4000</div>
-            <div style={{ marginTop: 16 }}>
+          <div className="visit-map-placeholder" style={{ padding: 0, overflow: "hidden", background: "transparent" }}>
+            <iframe
+              src="https://maps.google.com/maps?q=187+George+St+Brisbane+City+QLD+4000&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="320"
+              style={{ border: 0, display: "block", borderRadius: 4 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ido Hair Brisbane location"
+            />
+            <div style={{ padding: "14px 0 0", fontSize: "0.85rem", color: "var(--soft)" }}>
+              Level 2 / 187 George St, Brisbane City QLD 4000 &nbsp;·&nbsp;
               <a href="https://maps.google.com/?q=Ido+Hair+Brisbane" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
             </div>
           </div>
@@ -331,6 +337,7 @@ export default async function Home() {
           <p className="section-eyebrow">Reservations</p>
           <h2 className="section-title">Ready to book<br />your visit?</h2>
           <p className="section-body">Call us or fill in the form and we&apos;ll confirm your appointment by phone or message. Walk-ins welcome based on availability.</p>
+          <p className="section-body" style={{ fontSize: "0.88rem", opacity: 0.55, marginTop: 8 }}>Pricing varies by service and hair type. Current rates are posted on our Instagram stories and Facebook service categories.</p>
           <div className="booking-details">
             <div className="detail-item">
               <div className="detail-icon">📍</div>
