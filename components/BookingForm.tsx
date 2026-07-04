@@ -97,12 +97,12 @@ export default function BookingForm() {
           />
         </div>
         <div className="form-group">
-          <label className="form-label" htmlFor="field-contact">Phone or email</label>
+          <label className="form-label" htmlFor="field-contact">Phone number</label>
           <input
             className="form-input"
             id="field-contact"
-            type="text"
-            placeholder="Contact details"
+            type="tel"
+            placeholder="e.g. 0400 000 000"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             required
