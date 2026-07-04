@@ -115,7 +115,7 @@ export default async function Home() {
             alt="Ido Hair Brisbane"
             width={340}
             height={180}
-            style={{ objectFit: "contain", position: "relative", zIndex: 1, opacity: 0.88 }}
+            style={{ objectFit: "contain", position: "relative", zIndex: 1, opacity: 0.88, maxWidth: "80%", height: "auto" }}
             priority
           />
           <div className="hero-badge">
