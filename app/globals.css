@@ -216,7 +216,7 @@ footer { background: #111110; padding: 60px 80px 40px; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 48px 24px 40px; }
   .hero-right { min-height: 220px; padding: 32px 24px; }
-  .hero-badge { left: 16px; bottom: 24px; }
+  .hero-badge { display: none; }
   .hero-stats { gap: 24px; }
 
   /* SECTIONS */
