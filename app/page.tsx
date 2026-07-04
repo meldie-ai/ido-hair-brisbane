@@ -315,7 +315,7 @@ export default async function Home() {
           </div>
           <div className="visit-map-placeholder" style={{ padding: 0, overflow: "hidden", background: "transparent" }}>
             <iframe
-              src="https://maps.google.com/maps?q=187+George+St+Brisbane+City+QLD+4000&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API_KEY}&q=Ido+Hair+Brisbane,187+George+St+Brisbane+QLD`}
               width="100%"
               height="320"
               style={{ border: 0, display: "block", borderRadius: 4 }}
