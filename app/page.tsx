@@ -1,3 +1,4 @@
+import Image from "next/image";
 import BookingForm from "@/components/BookingForm";
 import Nav from "@/components/Nav";
 import { isSupabaseConfigured, getSupabase } from "@/lib/supabase";
@@ -109,23 +110,14 @@ export default async function Home() {
           </div>
         </div>
         <div className="hero-right">
-          <svg width="500" height="500" viewBox="0 0 500 500" style={{ opacity: 0.22, position: "absolute" }}>
-            <path d="M80 300 Q160 80 260 260 Q360 440 440 220" stroke="#8B6F5E" strokeWidth="2.5" fill="none" />
-            <path d="M60 340 Q140 100 250 300 Q360 480 460 240" stroke="#C8A99A" strokeWidth="2" fill="none" />
-            <path d="M100 280 Q200 60 280 240 Q360 420 450 200" stroke="#8B6F5E" strokeWidth="1.5" fill="none" />
-            <path d="M120 320 Q190 140 270 280 Q350 420 430 260" stroke="#C8A99A" strokeWidth="2.5" fill="none" />
-            <path d="M40 260 Q180 20 300 240 Q400 440 500 200" stroke="#8B6F5E" strokeWidth="1" fill="none" />
-            <path d="M200 100 Q240 200 200 320 Q180 400 210 460" stroke="#C8A99A" strokeWidth="1.5" fill="none" />
-            <path d="M300 80 Q280 200 310 340 Q320 400 300 460" stroke="#8B6F5E" strokeWidth="2" fill="none" />
-            <circle cx="250" cy="250" r="160" stroke="#C8A99A" strokeWidth="0.5" fill="none" />
-            <circle cx="250" cy="250" r="90" stroke="#8B6F5E" strokeWidth="0.4" fill="none" />
-          </svg>
-          <svg width="240" height="240" viewBox="0 0 240 240" style={{ zIndex: 1, position: "relative" }}>
-            <text x="120" y="105" textAnchor="middle" fontFamily="Noto Serif KR, serif" fontSize="18" fill="#8B6F5E" opacity="0.7">아이두 헤어</text>
-            <text x="120" y="135" textAnchor="middle" fontFamily="Noto Serif KR, serif" fontSize="12" fill="#8B6F5E" opacity="0.5">브리즈번</text>
-            <circle cx="120" cy="120" r="100" stroke="#C8A99A" strokeWidth="0.8" fill="none" opacity="0.4" />
-            <circle cx="120" cy="120" r="80" stroke="#8B6F5E" strokeWidth="0.5" fill="none" opacity="0.3" />
-          </svg>
+          <Image
+            src="/images/logo.png"
+            alt="Ido Hair Brisbane"
+            width={340}
+            height={180}
+            style={{ objectFit: "contain", position: "relative", zIndex: 1, opacity: 0.88 }}
+            priority
+          />
           <div className="hero-badge">
             <div className="badge-stars">★★★★★</div>
             <div className="badge-score">4.7</div>
