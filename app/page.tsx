@@ -97,7 +97,7 @@ export default async function Home() {
           </h1>
           <p className="hero-subtitle">아이두 헤어 브리즈번</p>
           <p className="hero-desc">
-            Government-certified hairdressers and educators — qualified across Australia, Korea, Japan, and the UK — bringing precision technique to Level 2, 187 George Street.
+            Government-certified hairdressers and educators, qualified across Australia, Korea, Japan, and the UK. Precision technique at Level 2, 187 George Street.
           </p>
           <div className="hero-ctas">
             <a href="#booking" className="btn-primary">Book a Visit</a>
@@ -132,9 +132,9 @@ export default async function Home() {
         <h2 className="section-title">Crafted for every hair story</h2>
         <div className="services-grid">
           {[
-            { icon: "🌊", name: "Digital Perm", desc: "Korean-machine digital waves with lasting curl definition — from loose beach waves to defined spirals.", price: "From $200 · Main chemical work" },
+            { icon: "🌊", name: "Digital Perm", desc: "Korean-machine digital waves with lasting curl definition. Loose beach waves to defined spirals.", price: "From $200 · Main chemical work" },
             { icon: "🌸", name: "Colour & Tint", desc: "Full tint, ombré, balayage, foils, and bleach using premium Italian non-ammonia products.", price: "From $200 · Consultation required" },
-            { icon: "✨", name: "Nanoplasty Straightening", desc: "Authentic Nanoplasty technology — ultra-smooth, frizz-free results with genuine premium products.", price: "From $200 · Premium product" },
+            { icon: "✨", name: "Nanoplasty Straightening", desc: "Authentic Nanoplasty technology. Ultra-smooth, frizz-free results with genuine premium products.", price: "From $200 · Premium product" },
             { icon: "🪄", name: "Keratin Smoothing", desc: "Japanese Shiseido and Korean-technique keratin for silky, manageable hair.", price: "From $200 · Consultation included" },
             { icon: "💫", name: "Cold Perm / C-Curl", desc: "Korean Create ATS premium wave solution for natural, bouncy curls with lasting hold.", price: "From $200 · Made in Korea" },
             { icon: "✂️", name: "Cut & Styling", desc: "Precision cuts from hairdressers certified across Australia, UK, Korea, and Japan.", price: "Consultation pricing" },
@@ -154,13 +154,13 @@ export default async function Home() {
         <div>
           <p className="section-eyebrow">Our Story</p>
           <h2 className="section-title">Qualified across<br />four countries</h2>
-          <p className="section-body">Ido Hair is owner-operated by an Australian government-certified hair professional and educator — with qualifications spanning Australia, the UK, Korea, and Japan. We&apos;ve published a hairdressing book, <em>The Basic of Scissors</em>, in Korea, and even designed our own professional scissors.</p>
+          <p className="section-body">Ido Hair is owner-operated by an Australian government-certified hair professional and educator, with qualifications spanning Australia, the UK, Korea, and Japan. We&apos;ve published a hairdressing book, <em>The Basic of Scissors</em>, in Korea, and even designed our own professional scissors.</p>
           <div className="credentials-list">
             {[
-              { flag: "🇦🇺", title: "Australia — Government-Certified Professional & Educator", body: "Registered hairdresser and certified hairdressing instructor" },
-              { flag: "🇰🇷", title: "Korea — Qualified Hairdresser", body: "Published authors of The Basic of Scissors · Designed professional scissors used in-salon" },
-              { flag: "🇯🇵", title: "Japan — Qualified Hairdresser", body: "Japanese Shiseido straightening specialists" },
-              { flag: "🇬🇧", title: "United Kingdom — Qualified Hairdresser", body: "European colour and technique foundation" },
+              { flag: "🇦🇺", title: "Australia: Government-Certified Professional & Educator", body: "Registered hairdresser and certified hairdressing instructor" },
+              { flag: "🇰🇷", title: "Korea: Qualified Hairdresser", body: "Published authors of The Basic of Scissors · Designed professional scissors used in-salon" },
+              { flag: "🇯🇵", title: "Japan: Qualified Hairdresser", body: "Japanese Shiseido straightening specialists" },
+              { flag: "🇬🇧", title: "United Kingdom: Qualified Hairdresser", body: "European colour and technique foundation" },
             ].map((c) => (
               <div className="cred-item" key={c.flag}>
                 <div className="cred-flag">{c.flag}</div>
@@ -205,7 +205,7 @@ export default async function Home() {
           <h2 className="section-title">Morning &amp; weekday discounts</h2>
           <div className="promo-grid">
             <div className="promo-card featured">
-              <div className="promo-label">Morning Event — Every Day</div>
+              <div className="promo-label">Morning Event · Every Day</div>
               <div style={{ fontSize: "0.9rem", color: "rgba(248,245,240,0.6)", lineHeight: 1.8, marginBottom: 24 }}>
                 Book at least one day in advance and arrive between 9:45–11:00 am to access the current discount. Applies to all main chemical work only. Prices subject to change upon consultation.
               </div>
@@ -271,7 +271,7 @@ export default async function Home() {
         </div>
         <div className="reviews-grid">
           {[
-            { stars: "★★★★★", text: "I am so impressed with how it turned out! My hairdresser Yein was very welcoming and friendly — she listened well to what I wanted to achieve.", author: "Rina · 3 weeks ago" },
+            { stars: "★★★★★", text: "I am so impressed with how it turned out! My hairdresser Yein was very welcoming and friendly. She listened well to what I wanted to achieve.", author: "Rina · 3 weeks ago" },
             { stars: "★★★★★", text: "I had a digital perm done and couldn't be happier. The team was professional, attentive, and really took time to understand the look I wanted.", author: "Yana S. · 2 months ago" },
             { stars: "★★★★★", text: "Easy to find, convenient location. I booked the day before and they were incredibly accommodating in fitting me in last minute.", author: "Manna L. · 1 month ago" },
           ].map((r) => (
@@ -330,7 +330,7 @@ export default async function Home() {
         <div>
           <p className="section-eyebrow">Reservations</p>
           <h2 className="section-title">Ready to book<br />your visit?</h2>
-          <p className="section-body">Call us or fill in the form — we&apos;ll confirm your appointment by phone or message. Walk-ins welcome based on availability.</p>
+          <p className="section-body">Call us or fill in the form and we&apos;ll confirm your appointment by phone or message. Walk-ins welcome based on availability.</p>
           <div className="booking-details">
             <div className="detail-item">
               <div className="detail-icon">📍</div>
