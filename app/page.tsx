@@ -132,15 +132,14 @@ export default async function Home() {
         <h2 className="section-title">Crafted for every hair story</h2>
         <div className="services-grid">
           {[
-            { icon: "🌊", name: "Digital Perm", desc: "Korean-machine digital waves with lasting curl definition. Loose beach waves to defined spirals." },
-            { icon: "🌸", name: "Colour & Tint", desc: "Full tint, ombré, balayage, foils, and bleach using premium Italian non-ammonia products." },
-            { icon: "✨", name: "Nanoplasty Straightening", desc: "Authentic Nanoplasty technology. Ultra-smooth, frizz-free results with genuine premium products." },
-            { icon: "🪄", name: "Keratin Smoothing", desc: "Japanese Shiseido and Korean-technique keratin for silky, manageable hair." },
-            { icon: "💫", name: "Cold Perm / C-Curl", desc: "Korean Create ATS premium wave solution for natural, bouncy curls with lasting hold." },
-            { icon: "✂️", name: "Cut & Styling", desc: "Precision cuts from hairdressers certified across Australia, UK, Korea, and Japan." },
+            { name: "Digital Perm", desc: "Korean-machine digital waves with lasting curl definition. Loose beach waves to defined spirals." },
+            { name: "Colour & Tint", desc: "Full tint, ombré, balayage, foils, and bleach using premium Italian non-ammonia products." },
+            { name: "Nanoplasty Straightening", desc: "Authentic Nanoplasty technology. Ultra-smooth, frizz-free results with genuine premium products." },
+            { name: "Keratin Smoothing", desc: "Japanese Shiseido and Korean-technique keratin for silky, manageable hair." },
+            { name: "Cold Perm / C-Curl", desc: "Korean Create ATS premium wave solution for natural, bouncy curls with lasting hold." },
+            { name: "Cut & Styling", desc: "Precision cuts from hairdressers certified across Australia, UK, Korea, and Japan." },
           ].map((s) => (
             <div className="service-card" key={s.name}>
-              <span className="service-icon">{s.icon}</span>
               <div className="service-name">{s.name}</div>
               <div className="service-desc">{s.desc}</div>
             </div>

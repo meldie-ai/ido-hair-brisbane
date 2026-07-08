@@ -57,14 +57,12 @@ section { padding: 100px 80px; }
 
 /* SERVICES */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; background: var(--mist); }
-.service-card { background: var(--cream); padding: 48px 40px; transition: background 0.25s; cursor: pointer; position: relative; overflow: hidden; }
-.service-card::after { content: ''; position: absolute; bottom: 0; left: 0; height: 2px; width: 0; background: var(--blush); transition: width 0.35s; }
+.service-card { background: var(--cream); padding: 40px; transition: background 0.25s; cursor: pointer; position: relative; overflow: hidden; border-top: 2px solid var(--mist); }
+.service-card::after { content: ''; position: absolute; top: -2px; left: 0; height: 2px; width: 0; background: var(--blush); transition: width 0.35s; }
 .service-card:hover { background: #FAF7F4; }
 .service-card:hover::after { width: 100%; }
-.service-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
 .service-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 10px; }
-.service-desc { font-size: 0.88rem; color: var(--soft); line-height: 1.7; margin-bottom: 20px; }
-.service-price { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blush); font-weight: 500; }
+.service-desc { font-size: 0.88rem; color: var(--soft); line-height: 1.7; }
 
 /* ABOUT */
 #about { background: var(--charcoal); color: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
