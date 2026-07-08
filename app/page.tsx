@@ -178,26 +178,7 @@ export default async function Home() {
       </section>
 
       {/* TEAM — live from Supabase */}
-      <section id="team">
-        <p className="section-eyebrow">Our Stylists</p>
-        <h2 className="section-title">The team behind<br />every great result</h2>
-        <div className="team-grid">
-          {staff.map((m) => (
-            <div className="team-card" key={m.id}>
-              <div className="team-avatar">
-                {m.photo_url
-                  ? <img src={m.photo_url} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
-                  : "✂️"
-                }
-              </div>
-              <div className="team-name">{m.name}</div>
-              <div className="team-role">{m.role}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PROMOTIONS — live from Supabase */}
+{/* PROMOTIONS — live from Supabase */}
       {promotions.length > 0 && (
         <section id="promotions">
           <p className="section-eyebrow">Current Offers</p>
@@ -406,8 +387,7 @@ export default async function Home() {
               <h4>Info</h4>
               <ul>
                 <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#promotions">Offers</a></li>
+<li><a href="#promotions">Offers</a></li>
                 <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#visit">Hours &amp; Location</a></li>
               </ul>
