@@ -14,8 +14,7 @@ export default function Nav() {
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#promotions">Offers</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#reviews">Reviews</a></li>
+<li><a href="#reviews">Reviews</a></li>
         <li><a href="#visit">Visit</a></li>
         <li><a href="#booking" className="nav-book">Book Now</a></li>
       </ul>
@@ -32,7 +31,7 @@ export default function Nav() {
       {/* Mobile drawer */}
       {open && (
         <div className="nav-mobile-drawer">
-          {["#services", "#about", "#promotions", "#team", "#reviews", "#visit"].map((href) => (
+          {["#services", "#about", "#promotions", "#reviews", "#visit"].map((href) => (
             <a key={href} href={href} onClick={() => setOpen(false)}>
               {href.replace("#", "").charAt(0).toUpperCase() + href.replace("#", "").slice(1)}
             </a>
