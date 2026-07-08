@@ -404,7 +404,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2025 Ido Hair Brisbane. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Ido Hair Brisbane. All rights reserved.</span>
           <span>Level 2 / 187 George St, Brisbane QLD 4000</span>
         </div>
       </footer>
