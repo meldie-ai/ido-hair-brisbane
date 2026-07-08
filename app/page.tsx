@@ -177,8 +177,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* TEAM — live from Supabase */}
-{/* PROMOTIONS — live from Supabase */}
       {promotions.length > 0 && (
         <section id="promotions">
           <p className="section-eyebrow">Current Offers</p>
