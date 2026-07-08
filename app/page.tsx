@@ -3,6 +3,7 @@ import BookingForm from "@/components/BookingForm";
 import Nav from "@/components/Nav";
 import { isSupabaseConfigured, getSupabase } from "@/lib/supabase";
 import type { StaffMember, Promotion, BusinessHour, Announcement } from "@/lib/types";
+import { Baby, Coffee, CreditCard, DoorOpen, ParkingCircle, Toilet, MapPin, Phone, Clock, Share2 } from "lucide-react";
 
 export const revalidate = 30;
 
@@ -307,8 +308,15 @@ export default async function Home() {
               </tbody>
             </table>
             <div className="info-pills" style={{ marginTop: 28 }}>
-              {["👶 Good for kids", "☕ Beverages provided", "💳 Cards & NFC pay", "🚶 Walk-ins welcome", "🅿️ Paid street parking", "🚽 Toilet on-site"].map((pill) => (
-                <span className="pill" key={pill}>{pill}</span>
+              {[
+                { icon: <Baby size={14} />, label: "Good for kids" },
+                { icon: <Coffee size={14} />, label: "Beverages provided" },
+                { icon: <CreditCard size={14} />, label: "Cards & NFC pay" },
+                { icon: <DoorOpen size={14} />, label: "Walk-ins welcome" },
+                { icon: <ParkingCircle size={14} />, label: "Paid street parking" },
+                { icon: <Toilet size={14} />, label: "Toilet on-site" },
+              ].map((pill) => (
+                <span className="pill" key={pill.label}>{pill.icon}{pill.label}</span>
               ))}
             </div>
           </div>
@@ -339,21 +347,21 @@ export default async function Home() {
           <p className="section-body" style={{ fontSize: "0.88rem", opacity: 0.55, marginTop: 8 }}>Pricing varies by service and hair type. Current rates are posted on our Instagram stories and Facebook service categories.</p>
           <div className="booking-details">
             <div className="detail-item">
-              <div className="detail-icon">📍</div>
+              <div className="detail-icon"><MapPin size={18} /></div>
               <div>
                 <div className="detail-label">Location</div>
                 <div className="detail-val">Level 2 / 187 George St, Brisbane City QLD 4000</div>
               </div>
             </div>
             <div className="detail-item">
-              <div className="detail-icon">📞</div>
+              <div className="detail-icon"><Phone size={18} /></div>
               <div>
                 <div className="detail-label">Phone</div>
                 <div className="detail-val">0451 212 233 · 0451 212 266 · 0451 212 255</div>
               </div>
             </div>
             <div className="detail-item">
-              <div className="detail-icon">🕐</div>
+              <div className="detail-icon"><Clock size={18} /></div>
               <div>
                 <div className="detail-label">Hours</div>
                 <div className="detail-val">
@@ -363,7 +371,7 @@ export default async function Home() {
               </div>
             </div>
             <div className="detail-item">
-              <div className="detail-icon">📱</div>
+              <div className="detail-icon"><Share2 size={18} /></div>
               <div>
                 <div className="detail-label">Social &amp; Pricing</div>
                 <div className="detail-val">
