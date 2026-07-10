@@ -1,9 +1,8 @@
 import Image from "next/image";
-import BookingForm from "@/components/BookingForm";
 import Nav from "@/components/Nav";
 import { isSupabaseConfigured, getSupabase } from "@/lib/supabase";
 import type { StaffMember, Promotion, BusinessHour, Announcement } from "@/lib/types";
-import { Baby, Coffee, CreditCard, DoorOpen, ParkingCircle, Toilet, MapPin, Phone, Clock, Share2 } from "lucide-react";
+import { Baby, Coffee, CreditCard, DoorOpen, ParkingCircle, Toilet, MapPin, Clock, Share2 } from "lucide-react";
 
 export const revalidate = 30;
 
@@ -312,50 +311,47 @@ export default async function Home() {
 
       {/* BOOKING */}
       <section id="booking">
-        <div>
-          <p className="section-eyebrow">Reservations</p>
-          <h2 className="section-title">Ready to book<br />your visit?</h2>
-          <p className="section-body">Call us or fill in the form and we&apos;ll confirm your appointment by phone or message. Walk-ins welcome based on availability.</p>
-          <p className="section-body" style={{ fontSize: "0.88rem", opacity: 0.55, marginTop: 8 }}>Pricing varies by service and hair type. Current rates are posted on our Instagram stories and Facebook service categories.</p>
-          <div className="booking-details">
-            <div className="detail-item">
-              <div className="detail-icon"><MapPin size={18} /></div>
-              <div>
-                <div className="detail-label">Location</div>
-                <div className="detail-val">Level 2 / 187 George St, Brisbane City QLD 4000</div>
+        <p className="section-eyebrow">Reservations</p>
+        <h2 className="section-title">Call to book<br />your visit</h2>
+        <p className="section-body" style={{ maxWidth: 520 }}>Walk-ins welcome based on availability. For guaranteed appointments, give us a call and we&apos;ll confirm your time and service.</p>
+        <div className="call-to-book">
+          {[
+            { number: "0451 212 233", href: "tel:0451212233" },
+            { number: "0451 212 266", href: "tel:0451212266" },
+            { number: "0451 212 255", href: "tel:0451212255" },
+          ].map((p) => (
+            <a key={p.href} href={p.href} className="call-btn">{p.number}</a>
+          ))}
+        </div>
+        <div className="booking-meta">
+          <div className="detail-item">
+            <div className="detail-icon"><MapPin size={18} /></div>
+            <div>
+              <div className="detail-label">Location</div>
+              <div className="detail-val">Level 2 / 187 George St, Brisbane City QLD 4000</div>
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="detail-icon"><Clock size={18} /></div>
+            <div>
+              <div className="detail-label">Hours</div>
+              <div className="detail-val">
+                Mon–Fri 9:30 am–6:30 pm &nbsp;·&nbsp; Sat–Sun 9:30 am–5:00 pm<br />
+                <span style={{ fontSize: "0.82rem", opacity: 0.5 }}>Morning event: 9:45–11:00 am daily (pre-book 1 day prior)</span>
               </div>
             </div>
-            <div className="detail-item">
-              <div className="detail-icon"><Phone size={18} /></div>
-              <div>
-                <div className="detail-label">Phone</div>
-                <div className="detail-val">0451 212 233 · 0451 212 266 · 0451 212 255</div>
-              </div>
-            </div>
-            <div className="detail-item">
-              <div className="detail-icon"><Clock size={18} /></div>
-              <div>
-                <div className="detail-label">Hours</div>
-                <div className="detail-val">
-                  Mon–Fri 9:30 am–6:30 pm &nbsp;·&nbsp; Sat–Sun 9:30 am–5:00 pm<br />
-                  <span style={{ fontSize: "0.82rem", color: "rgba(248,245,240,0.4)" }}>Morning event: 9:45–11:00 am daily (pre-book 1 day prior)</span>
-                </div>
-              </div>
-            </div>
-            <div className="detail-item">
-              <div className="detail-icon"><Share2 size={18} /></div>
-              <div>
-                <div className="detail-label">Social &amp; Pricing</div>
-                <div className="detail-val">
-                  <a href="https://www.instagram.com/idohair_brisbane_official/" target="_blank" rel="noopener noreferrer">@idohair_brisbane_official</a> &nbsp;·&nbsp;
-                  <a href="https://www.facebook.com/idohairbrisbane/" target="_blank" rel="noopener noreferrer">Facebook</a><br />
-                  <span style={{ fontSize: "0.82rem", color: "rgba(248,245,240,0.4)" }}>Current pricing on Instagram stories &amp; Facebook service categories</span>
-                </div>
+          </div>
+          <div className="detail-item">
+            <div className="detail-icon"><Share2 size={18} /></div>
+            <div>
+              <div className="detail-label">Social &amp; Pricing</div>
+              <div className="detail-val">
+                <a href="https://www.instagram.com/idohair_brisbane_official/" target="_blank" rel="noopener noreferrer">@idohair_brisbane_official</a> &nbsp;·&nbsp;
+                <a href="https://www.facebook.com/idohairbrisbane/" target="_blank" rel="noopener noreferrer">Facebook</a>
               </div>
             </div>
           </div>
         </div>
-        <BookingForm />
       </section>
 
       {/* FOOTER */}
