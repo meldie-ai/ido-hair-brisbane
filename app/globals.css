@@ -75,7 +75,7 @@ section { padding: 100px 80px; }
 .cred-flag { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
 .cred-text { font-size: 0.88rem; color: rgba(248,245,240,0.65); line-height: 1.5; }
 .cred-text strong { color: var(--cream); font-weight: 500; display: block; margin-bottom: 2px; }
-.about-visual { background: url('/images/hair_ref5.jpg') center/cover no-repeat; border-radius: 4px; height: 440px; position: relative; overflow: hidden; }
+.about-visual { background: url('/images/hair_ref6.jpg') center/cover no-repeat; border-radius: 4px; height: 440px; position: relative; overflow: hidden; }
 .about-visual::before { content: ''; position: absolute; inset: 0; background: rgba(26,26,24,0.25); border-radius: 4px; }
 
 /* PROMOTIONS */
