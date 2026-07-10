@@ -43,7 +43,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .hero-stats { display: flex; gap: 40px; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--mist); }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; }
 .stat-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-top: 2px; }
-.hero-right { background: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80') center/cover no-repeat; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 500px; }
+.hero-right { background: url('/images/hair_ref1.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 500px; }
 .hero-right::before { content: ''; position: absolute; inset: 0; background: rgba(26,26,24,0.52); z-index: 0; }
 .hero-badge { position: absolute; bottom: 48px; left: -24px; background: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 20px 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); border-radius: 4px; min-width: 200px; z-index: 2; }
 .badge-stars { color: var(--blush); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 4px; }
@@ -75,7 +75,7 @@ section { padding: 100px 80px; }
 .cred-flag { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
 .cred-text { font-size: 0.88rem; color: rgba(248,245,240,0.65); line-height: 1.5; }
 .cred-text strong { color: var(--cream); font-weight: 500; display: block; margin-bottom: 2px; }
-.about-visual { background: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80') center/cover no-repeat; border-radius: 4px; height: 440px; position: relative; overflow: hidden; }
+.about-visual { background: url('/images/hair_ref2.jpg') center/cover no-repeat; border-radius: 4px; height: 440px; position: relative; overflow: hidden; }
 .about-visual::before { content: ''; position: absolute; inset: 0; background: rgba(26,26,24,0.45); border-radius: 4px; }
 
 /* PROMOTIONS */
