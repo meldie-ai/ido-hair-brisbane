@@ -116,7 +116,7 @@ export default async function Home() {
             alt="Ido Hair Brisbane"
             width={340}
             height={180}
-            style={{ objectFit: "contain", position: "relative", zIndex: 1, opacity: 0.88, maxWidth: "80%", height: "auto" }}
+            style={{ objectFit: "contain", position: "relative", zIndex: 1, maxWidth: "80%", height: "auto", filter: "invert(1) brightness(2)" }}
             priority
           />
           <div className="hero-badge">
@@ -168,13 +168,7 @@ export default async function Home() {
             ))}
           </div>
         </div>
-        <div className="about-visual">
-          <div className="about-visual-inner">
-            <div style={{ fontSize: "3.5rem", opacity: 0.35, marginBottom: 16 }}>📖</div>
-            <div style={{ fontStyle: "italic", fontSize: "1rem", opacity: 0.5, marginBottom: 8 }}>The Basic of Scissors</div>
-            <div style={{ fontSize: "0.78rem", opacity: 0.3, lineHeight: 1.9, marginTop: 32 }}>아이두 헤어<br />브리즈번 CBD<br />George St Level 2</div>
-          </div>
-        </div>
+        <div className="about-visual" />
       </section>
 
       {promotions.length > 0 && (
@@ -188,7 +182,7 @@ export default async function Home() {
                 Book at least one day in advance and arrive between 9:45–11:00 am to access the current discount. Applies to all main chemical work only. Prices subject to change upon consultation.
               </div>
               <div className="promo-time">
-                ⏰ Window: 9:45 am – 11:00 am &nbsp;·&nbsp; Pre-booking required (1 day prior)
+                Window: 9:45 am – 11:00 am &nbsp;·&nbsp; Pre-booking required (1 day prior)
               </div>
             </div>
             {promotions.map((p) => (
@@ -217,16 +211,15 @@ export default async function Home() {
         </div>
         <div className="products-grid">
           {[
-            { img: "🇮🇹", brand: "Italy / Australia", name: "Premium Italian Tint Colour", price: "Non-ammonia · Australian owned" },
-            { img: "🇯🇵", brand: "Japan", name: "Shiseido Straightening", price: "Made in Japan · Chemical straightening" },
-            { img: "🇰🇷", brand: "Korea", name: "Create ATS Perm Solution", price: "Made in Korea · Professional wave" },
-            { img: "✨", brand: "Authentic", name: "Nanoplasty Treatment", price: "Premium genuine technology" },
+            { brand: "Italy / Australia", name: "Premium Italian Tint Colour", note: "Non-ammonia · Australian owned" },
+            { brand: "Japan", name: "Shiseido Straightening", note: "Made in Japan · Chemical straightening" },
+            { brand: "Korea", name: "Create ATS Perm Solution", note: "Made in Korea · Professional wave" },
+            { brand: "Authentic", name: "Nanoplasty Treatment", note: "Premium genuine technology" },
           ].map((p) => (
             <div className="product-card" key={p.name}>
-              <div className="product-img">{p.img}</div>
               <div className="product-brand">{p.brand}</div>
               <div className="product-name">{p.name}</div>
-              <div className="product-price">{p.price}</div>
+              <div className="product-price">{p.note}</div>
             </div>
           ))}
         </div>
