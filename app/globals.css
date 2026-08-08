@@ -21,11 +21,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .nav-links { display: flex; gap: 40px; list-style: none; }
 .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); transition: color 0.2s; }
 .nav-links a:hover { color: var(--charcoal); }
-.nav-book { background: var(--charcoal) !important; color: var(--cream) !important; padding: 10px 24px !important; border-radius: 100px; letter-spacing: 0.1em; }
-.nav-book:hover { background: var(--blush) !important; }
+.nav-book { background: var(--blush) !important; color: var(--cream) !important; padding: 10px 24px !important; border-radius: 100px; letter-spacing: 0.1em; }
+.nav-book:hover { background: var(--charcoal) !important; }
 
 /* EVENT STRIP */
-.event-strip { background: var(--charcoal); color: var(--cream); text-align: center; padding: 14px 20px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 72px; }
+.event-strip { background: var(--blush); color: var(--cream); text-align: center; padding: 14px 20px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 72px; }
 .event-strip span { color: var(--mist); margin: 0 8px; }
 
 /* HERO */
@@ -37,8 +37,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .hero-subtitle { font-family: 'Noto Serif KR', serif; font-size: 1rem; color: var(--soft); font-weight: 300; margin-bottom: 32px; letter-spacing: 0.05em; }
 .hero-desc { font-size: 1rem; color: var(--soft); max-width: 400px; margin-bottom: 44px; line-height: 1.75; }
 .hero-ctas { display: flex; gap: 16px; align-items: center; }
-.btn-primary { background: var(--charcoal); color: var(--cream); padding: 14px 32px; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 100px; transition: background 0.25s; }
-.btn-primary:hover { background: var(--blush); }
+.btn-primary { background: var(--blush); color: var(--cream); padding: 14px 32px; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 100px; transition: background 0.25s; }
+.btn-primary:hover { background: var(--charcoal); }
 .btn-ghost { color: var(--charcoal); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 32px; border-radius: 100px; border: 1.5px solid var(--charcoal); transition: border-color 0.2s, color 0.2s; }
 .btn-ghost:hover { border-color: var(--blush); color: var(--blush); }
 .hero-stats { display: flex; gap: 40px; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--mist); }
@@ -190,7 +190,7 @@ footer { background: var(--charcoal); padding: 60px 80px 40px; }
   }
   .nav-mobile-drawer a:last-child { border-bottom: none; }
   .nav-mobile-book {
-    margin-top: 12px; background: var(--charcoal) !important;
+    margin-top: 12px; background: var(--blush) !important;
     color: var(--cream) !important; text-align: center;
     padding: 14px !important; border-radius: 100px; border: none !important;
   }
