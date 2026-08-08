@@ -46,7 +46,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .stat-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-top: 2px; }
 .hero-right { background: url('/images/hair_ref1.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 500px; }
 .hero-right::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.52); z-index: 0; }
-.hero-badge { position: absolute; bottom: 48px; left: -24px; background: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 20px 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); border-radius: 8px; min-width: 200px; z-index: 2; }
+.hero-badge { position: absolute; bottom: 48px; left: -24px; background: var(--cream); border: 1px solid rgba(255,255,255,0.2); padding: 20px 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); border-radius: 8px; min-width: 200px; z-index: 2; }
 .badge-stars { color: var(--blush); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 4px; }
 .badge-score { font-family: 'Inter Tight', sans-serif; font-size: 1.8rem; font-weight: 300; }
 .badge-count { font-size: 0.72rem; color: var(--soft); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -61,7 +61,7 @@ section { padding: 100px 80px; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; background: var(--mist); }
 .service-card { background: var(--cream); padding: 40px; transition: background 0.25s; cursor: pointer; position: relative; overflow: hidden; border-top: 2px solid var(--mist); }
 .service-card::after { content: ''; position: absolute; top: -2px; left: 0; height: 2px; width: 0; background: var(--blush); transition: width 0.35s; }
-.service-card:hover { background: #F5F5F5; }
+.service-card:hover { background: var(--mist); }
 .service-card:hover::after { width: 100%; }
 .service-name { font-family: 'Inter Tight', sans-serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 10px; }
 .service-desc { font-size: 0.88rem; color: var(--soft); line-height: 1.7; }
@@ -80,7 +80,7 @@ section { padding: 100px 80px; }
 .about-visual::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.25); border-radius: 4px; }
 
 /* PROMOTIONS */
-#promotions { background: #F4F4F2; }
+#promotions { background: var(--mist); }
 #promotions .section-eyebrow { color: var(--blush); }
 .promo-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-top: 60px; }
 .promo-card { background: var(--cream); padding: 40px; border-radius: 4px; }
@@ -134,9 +134,9 @@ section { padding: 100px 80px; }
 #booking .section-eyebrow { color: var(--mist); opacity: 0.6; }
 #booking .section-body { color: rgba(250,250,250,0.6); max-width: 520px; }
 .call-to-book { display: flex; flex-wrap: wrap; gap: 16px; margin: 40px 0; }
-.call-btn { display: inline-flex; align-items: center; gap: 12px; background: #fff; color: var(--charcoal); font-size: 1rem; font-weight: 500; letter-spacing: 0.03em; padding: 16px 36px; border-radius: 100px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.call-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--cream); color: var(--charcoal); font-size: 1rem; font-weight: 500; letter-spacing: 0.03em; padding: 16px 36px; border-radius: 100px; text-decoration: none; transition: background 0.2s, color 0.2s; }
 .call-btn::before { content: ''; display: inline-block; width: 18px; height: 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E") center/contain no-repeat; }
-.call-btn:hover { background: var(--blush); color: #fff; }
+.call-btn:hover { background: var(--blush); color: var(--cream); }
 .call-btn:hover::before { filter: brightness(0) invert(1); }
 .booking-meta { display: flex; flex-direction: column; gap: 0; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); }
 .booking-meta .detail-label { color: rgba(250,250,250,0.4); }
@@ -149,10 +149,8 @@ section { padding: 100px 80px; }
 .detail-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush); margin-bottom: 4px; }
 .detail-val { font-size: 0.92rem; color: var(--cream); line-height: 1.55; }
 .detail-val a { color: var(--blush); text-decoration: none; }
-.form-input-error { border-color: #c00 !important; }
-
 /* FOOTER */
-footer { background: #0A0A0A; padding: 60px 80px 40px; }
+footer { background: var(--charcoal); padding: 60px 80px 40px; }
 .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 32px; }
 .footer-logo { font-family: 'Noto Serif KR', serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 0.12em; color: var(--cream); }
 .footer-logo span { color: rgba(224,224,220,0.6); }

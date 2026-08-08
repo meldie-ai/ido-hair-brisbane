@@ -177,7 +177,7 @@ export default async function Home() {
           <div className="promo-grid">
             <div className="promo-card featured">
               <div className="promo-label">Morning Event · Every Day</div>
-              <div style={{ fontSize: "0.9rem", color: "rgba(248,245,240,0.6)", lineHeight: 1.8, marginBottom: 24 }}>
+              <div style={{ fontSize: "0.9rem", color: "rgba(250,250,250,0.6)", lineHeight: 1.8, marginBottom: 24 }}>
                 Book at least one day in advance and arrive between 9:45–11:00 am to access the current discount. Applies to all main chemical work only. Prices subject to change upon consultation.
               </div>
               <div className="promo-time">

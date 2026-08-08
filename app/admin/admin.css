@@ -16,7 +16,7 @@
   background: var(--cream);
 }
 .admin-login-card {
-  background: white;
+  background: var(--cream);
   border: 1px solid var(--mist);
   border-radius: 8px;
   padding: 48px 40px;
@@ -50,7 +50,7 @@
   color: var(--charcoal);
   outline: none;
   transition: border-color 0.2s;
-  background: white;
+  background: var(--cream);
   box-sizing: border-box;
 }
 .admin-input:focus { border-color: var(--blush); }
@@ -72,8 +72,8 @@
 }
 .admin-btn:hover { background: var(--blush); }
 .admin-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.admin-btn.danger { background: #c0392b; border-radius: 100px; }
-.admin-btn.danger:hover { background: #a93226; }
+.admin-btn.danger { background: var(--soft); border-radius: 100px; }
+.admin-btn.danger:hover { background: var(--charcoal); }
 .admin-btn.secondary {
   background: transparent;
   color: var(--charcoal);
@@ -83,18 +83,18 @@
 .admin-btn.secondary:hover { background: var(--charcoal); color: var(--cream); }
 .admin-btn.sm { padding: 8px 18px; font-size: 0.72rem; width: auto; margin-top: 0; }
 .admin-error {
-  background: rgba(192,57,43,0.07);
-  border: 1px solid rgba(192,57,43,0.2);
-  color: #c0392b;
+  background: rgba(43,40,41,0.06);
+  border: 1px solid rgba(43,40,41,0.2);
+  color: var(--soft);
   border-radius: 6px;
   padding: 10px 14px;
   font-size: 0.85rem;
   margin-bottom: 16px;
 }
 .admin-success {
-  background: rgba(39,174,96,0.07);
-  border: 1px solid rgba(39,174,96,0.2);
-  color: #27ae60;
+  background: rgba(36,53,81,0.07);
+  border: 1px solid rgba(36,53,81,0.2);
+  color: var(--blush);
   border-radius: 6px;
   padding: 10px 14px;
   font-size: 0.85rem;
@@ -141,7 +141,7 @@
 .admin-header-logout:hover { border-color: rgba(255,255,255,0.6); color: var(--cream); }
 
 .admin-tabs {
-  background: white;
+  background: var(--cream);
   border-bottom: 1px solid var(--mist);
   display: flex;
   padding: 0 40px;
@@ -184,7 +184,7 @@
 
 /* CARDS / LISTS */
 .admin-card {
-  background: white;
+  background: var(--cream);
   border: 1px solid var(--mist);
   border-radius: 8px;
   padding: 20px 24px;
@@ -246,7 +246,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
+  background: var(--cream);
   border: 1px solid var(--mist);
   border-radius: 8px;
   padding: 16px 20px;
@@ -276,7 +276,7 @@
   height: 18px;
   left: 3px;
   top: 3px;
-  background: white;
+  background: var(--cream);
   border-radius: 50%;
   transition: transform 0.2s;
   box-shadow: 0 1px 4px rgba(0,0,0,0.15);
