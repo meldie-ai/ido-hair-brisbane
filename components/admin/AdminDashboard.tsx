@@ -2,17 +2,16 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import StaffTab from './StaffTab'
 import PromotionsTab from './PromotionsTab'
 import HoursTab from './HoursTab'
 import AnnouncementTab from './AnnouncementTab'
 
-const TABS = ['Staff', 'Promotions', 'Hours', 'Announcement'] as const
+const TABS = ['Promotions', 'Hours', 'Announcement'] as const
 type Tab = typeof TABS[number]
 
 export default function AdminDashboard() {
   const router = useRouter()
-  const [tab, setTab] = useState<Tab>('Staff')
+  const [tab, setTab] = useState<Tab>('Promotions')
 
   async function logout() {
     await fetch('/api/admin/logout', { method: 'POST' })
@@ -36,7 +35,6 @@ export default function AdminDashboard() {
       </div>
 
       <div className="admin-content">
-        {tab === 'Staff'        && <StaffTab />}
         {tab === 'Promotions'   && <PromotionsTab />}
         {tab === 'Hours'        && <HoursTab />}
         {tab === 'Announcement' && <AnnouncementTab />}
