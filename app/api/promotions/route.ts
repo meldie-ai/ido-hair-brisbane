@@ -1,19 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSupabase } from '@/lib/supabase'
+import { getDb } from '@/lib/db'
 import { verifyAdminRequest } from '@/lib/auth'
 
 export async function GET() {
-  const db = getSupabase()
-  const { data, error } = await db.from('promotions').select('*').order('created_at')
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data)
+  try {
+    const sql = getDb()
+    const rows = await sql`SELECT * FROM promotions ORDER BY created_at`
+    return NextResponse.json(rows)
+  } catch (e: unknown) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 })
+  }
 }
 
 export async function POST(req: NextRequest) {
   if (!await verifyAdminRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  const body = await req.json()
-  const db = getSupabase()
-  const { data, error } = await db.from('promotions').insert(body).select().single()
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data)
+  try {
+    const { label, discount_percent, description, time_window_start, time_window_end, is_active } = await req.json()
+    const sql = getDb()
+    const [row] = await sql`
+      INSERT INTO promotions (label, discount_percent, description, time_window_start, time_window_end, is_active)
+      VALUES (${label}, ${discount_percent}, ${description}, ${time_window_start}, ${time_window_end}, ${is_active ?? true})
+      RETURNING *`
+    return NextResponse.json(row)
+  } catch (e: unknown) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 })
+  }
 }

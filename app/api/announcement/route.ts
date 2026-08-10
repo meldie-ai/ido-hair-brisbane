@@ -1,26 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSupabase } from '@/lib/supabase'
+import { getDb } from '@/lib/db'
 import { verifyAdminRequest } from '@/lib/auth'
 
 export async function GET() {
-  const db = getSupabase()
-  const { data, error } = await db.from('announcement').select('*').limit(1).single()
-  if (error) return NextResponse.json(null)
-  return NextResponse.json(data)
+  try {
+    const sql = getDb()
+    const [row] = await sql`SELECT * FROM announcement LIMIT 1`
+    return NextResponse.json(row ?? null)
+  } catch {
+    return NextResponse.json(null)
+  }
 }
 
 export async function PUT(req: NextRequest) {
   if (!await verifyAdminRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  const body = await req.json()
-  const db = getSupabase()
-  // Always operate on the single row — upsert by id if provided, else get first row
-  const { data: existing } = await db.from('announcement').select('id').limit(1).single()
-  let result
-  if (existing) {
-    result = await db.from('announcement').update(body).eq('id', existing.id).select().single()
-  } else {
-    result = await db.from('announcement').insert(body).select().single()
+  try {
+    const { message_text, is_active } = await req.json()
+    const sql = getDb()
+
+    // Always operate on the single row — upsert by id if one exists
+    const [existing] = await sql`SELECT id FROM announcement LIMIT 1`
+    let row
+    if (existing) {
+      ;[row] = await sql`
+        UPDATE announcement
+        SET message_text = ${message_text}, is_active = ${is_active}
+        WHERE id = ${existing.id}
+        RETURNING *`
+    } else {
+      ;[row] = await sql`
+        INSERT INTO announcement (message_text, is_active)
+        VALUES (${message_text}, ${is_active})
+        RETURNING *`
+    }
+    return NextResponse.json(row)
+  } catch (e: unknown) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 })
   }
-  if (result.error) return NextResponse.json({ error: result.error.message }, { status: 500 })
-  return NextResponse.json(result.data)
 }

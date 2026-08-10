@@ -1,11 +1,3 @@
-export type StaffMember = {
-  id: string
-  name: string
-  role: string
-  photo_url: string | null
-  display_order: number
-}
-
 export type Promotion = {
   id: string
   label: string

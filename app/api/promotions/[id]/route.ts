@@ -1,24 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSupabase } from '@/lib/supabase'
+import { getDb } from '@/lib/db'
 import { verifyAdminRequest } from '@/lib/auth'
 
 type Params = { params: Promise<{ id: string }> }
 
 export async function PUT(req: NextRequest, { params }: Params) {
   if (!await verifyAdminRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  const { id } = await params
-  const body = await req.json()
-  const db = getSupabase()
-  const { data, error } = await db.from('promotions').update(body).eq('id', id).select().single()
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data)
+  try {
+    const { id } = await params
+    const { label, discount_percent, description, time_window_start, time_window_end, is_active } = await req.json()
+    const sql = getDb()
+    const [row] = await sql`
+      UPDATE promotions
+      SET label              = ${label},
+          discount_percent   = ${discount_percent},
+          description        = ${description},
+          time_window_start  = ${time_window_start},
+          time_window_end    = ${time_window_end},
+          is_active          = ${is_active}
+      WHERE id = ${id}
+      RETURNING *`
+    if (!row) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+    return NextResponse.json(row)
+  } catch (e: unknown) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 })
+  }
 }
 
 export async function DELETE(req: NextRequest, { params }: Params) {
   if (!await verifyAdminRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  const { id } = await params
-  const db = getSupabase()
-  const { error } = await db.from('promotions').delete().eq('id', id)
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json({ success: true })
+  try {
+    const { id } = await params
+    const sql = getDb()
+    await sql`DELETE FROM promotions WHERE id = ${id}`
+    return NextResponse.json({ success: true })
+  } catch (e: unknown) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 })
+  }
 }

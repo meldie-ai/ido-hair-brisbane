@@ -1,19 +1,12 @@
 import Image from "next/image";
 import Nav from "@/components/Nav";
-import { isSupabaseConfigured, getSupabase } from "@/lib/supabase";
-import type { StaffMember, Promotion, BusinessHour, Announcement } from "@/lib/types";
+import { isDbConfigured, getDb } from "@/lib/db";
+import type { Promotion, BusinessHour, Announcement } from "@/lib/types";
 import { Baby, Coffee, CreditCard, DoorOpen, ParkingCircle, Toilet, MapPin, Clock, Share2 } from "lucide-react";
 
 export const revalidate = 30;
 
-// ── Fallback data (used when Supabase isn't configured yet) ──────────────────
-
-const FALLBACK_STAFF: StaffMember[] = [
-  { id: "1", name: "Andy",       role: "Nanoplasty Specialist", photo_url: null, display_order: 1 },
-  { id: "2", name: "Yein",       role: "Colour & Styling",      photo_url: null, display_order: 2 },
-  { id: "3", name: "Ara",        role: "Perm Specialist",        photo_url: null, display_order: 3 },
-  { id: "4", name: "Nova & Rose",role: "Cut & Colour",           photo_url: null, display_order: 4 },
-];
+// ── Fallback data (used when DATABASE_URL isn't configured yet) ───────────────
 
 const FALLBACK_PROMOTIONS: Promotion[] = [
   { id: "1", label: "Tue – Fri", discount_percent: 20, description: "All main chemical services during the morning event window, Tuesday through Friday.",  time_window_start: "09:45", time_window_end: "11:00", is_active: true },
@@ -38,27 +31,32 @@ const FALLBACK_ANNOUNCEMENT: Announcement = {
 // ── Data fetching ────────────────────────────────────────────────────────────
 
 async function fetchSiteData() {
-  if (!isSupabaseConfigured()) {
+  if (!isDbConfigured()) {
     return {
-      staff: FALLBACK_STAFF,
       promotions: FALLBACK_PROMOTIONS,
       hours: FALLBACK_HOURS,
       announcement: FALLBACK_ANNOUNCEMENT,
     };
   }
-  const db = getSupabase();
-  const [staffRes, promoRes, hoursRes, announcementRes] = await Promise.all([
-    db.from("staff").select("*").order("display_order"),
-    db.from("promotions").select("*").eq("is_active", true).order("created_at"),
-    db.from("business_hours").select("*").order("day_of_week"),
-    db.from("announcement").select("*").eq("is_active", true).limit(1).single(),
-  ]);
-  return {
-    staff:        (staffRes.data        ?? FALLBACK_STAFF)       as StaffMember[],
-    promotions:   (promoRes.data        ?? FALLBACK_PROMOTIONS)  as Promotion[],
-    hours:        (hoursRes.data        ?? FALLBACK_HOURS)        as BusinessHour[],
-    announcement: (announcementRes.data ?? null)                  as Announcement | null,
-  };
+  try {
+    const sql = getDb();
+    const [promotions, hours, announcementRows] = (await Promise.all([
+      sql`SELECT * FROM promotions WHERE is_active = true ORDER BY created_at`,
+      sql`SELECT * FROM business_hours ORDER BY day_of_week`,
+      sql`SELECT * FROM announcement WHERE is_active = true LIMIT 1`,
+    ])) as [Promotion[], BusinessHour[], Announcement[]];
+    return {
+      promotions:   promotions.length   ? promotions   : FALLBACK_PROMOTIONS,
+      hours:        hours.length        ? hours        : FALLBACK_HOURS,
+      announcement: announcementRows[0] ?? null,
+    };
+  } catch {
+    return {
+      promotions: FALLBACK_PROMOTIONS,
+      hours: FALLBACK_HOURS,
+      announcement: FALLBACK_ANNOUNCEMENT,
+    };
+  }
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -73,7 +71,7 @@ function fmtTime(t: string | null): string {
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function Home() {
-  const { staff, promotions, hours, announcement } = await fetchSiteData();
+  const { promotions, hours, announcement } = await fetchSiteData();
   const today = new Date().toLocaleString("en-AU", { timeZone: "Australia/Brisbane", weekday: "long" });
 
   return (
